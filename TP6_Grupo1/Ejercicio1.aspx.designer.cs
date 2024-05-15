@@ -11,7 +11,7 @@ namespace TP6_Grupo1
 {
 
 
-    public partial class Inicio
+    public partial class Ejercicio1
     {
 
         /// <summary>
@@ -24,21 +24,21 @@ namespace TP6_Grupo1
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control HLejercicio1.
+        /// Control GVProductos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HLejercicio1;
+        protected global::System.Web.UI.WebControls.GridView GVProductos;
 
         /// <summary>
-        /// Control HLejercicio2.
+        /// Control HLinicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HLejercicio2;
+        protected global::System.Web.UI.WebControls.HyperLink HLinicio;
     }
 }

@@ -13,5 +13,10 @@ namespace TP6_Grupo1
         {
 
         }
+
+        protected void HLejercicio1_DataBinding(object sender, EventArgs e)
+        {
+
+        }
     }
 }

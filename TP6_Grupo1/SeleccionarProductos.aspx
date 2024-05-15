@@ -102,7 +102,7 @@
                     <td class="auto-style2"></td>
                     <td class="auto-style2"></td>
                     <td class="auto-style4">
-                        <asp:HyperLink ID="HLInicioEjer2" runat="server" NavigateUrl="~/Ejercicio2.aspx" >Volver al Inicio</asp:HyperLink>
+                        <asp:HyperLink ID="HLInicioEjer2" runat="server" NavigateUrl="~/Ejercicio2.aspx" OnDataBinding="Page_Load" >Volver al Inicio</asp:HyperLink>
                     </td>
                     <td class="auto-style2"></td>
                     <td class="auto-style2"></td>

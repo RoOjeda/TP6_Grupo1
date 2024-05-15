@@ -93,7 +93,7 @@
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:HyperLink ID="HLInicioEj2" runat="server" NavigateUrl="~/Ejercicio2.aspx" >Volver al Inicio</asp:HyperLink>
+                        <asp:HyperLink ID="HLInicioEj2" runat="server" NavigateUrl="~/Ejercicio2.aspx" OnDataBinding="Page_Load" >Volver al Inicio</asp:HyperLink>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

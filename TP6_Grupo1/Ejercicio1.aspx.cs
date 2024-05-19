@@ -12,9 +12,23 @@ namespace TP6_Grupo1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GestionProductos gestionProductos= new GestionProductos();
-            GVProductos.DataSource = gestionProductos.ObtenerProductos();//Data table
+            if (!IsPostBack)
+            {
+                CargarGVProductos();
+            }
+        }
+
+            private void CargarGVProductos()
+        {
+            GestionProductos gestionProductos = new GestionProductos();
+            GVProductos.DataSource = gestionProductos.ObtenerProductos(); // DataTable
             GVProductos.DataBind();
+        }
+
+        protected void GVProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GVProductos.PageIndex = e.NewPageIndex;
+            CargarGVProductos();
         }
 
         protected void GVProductos_SelectedIndexChanged(object sender, EventArgs e)

@@ -44,6 +44,7 @@ namespace TP6_Grupo1.Conexion
                 return null;
             }
         }
+
         public int EjecutarProcedimientoAlmacenado(SqlCommand comandoSQL, string ProcedimientoAlmacenado) //comandoSQL recibe tiene los parametros incluidos
         {
             int FilasCambiadas;

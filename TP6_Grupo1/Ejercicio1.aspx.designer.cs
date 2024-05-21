@@ -33,6 +33,15 @@ namespace TP6_Grupo1
         protected global::System.Web.UI.WebControls.GridView GVProductos;
 
         /// <summary>
+        /// Control lb_Mensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_Mensaje;
+
+        /// <summary>
         /// Control HLinicio.
         /// </summary>
         /// <remarks>

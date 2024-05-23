@@ -48,6 +48,33 @@ namespace TP6_Grupo1.Conexion
             {
                 return false;
             }
+            }
+        public bool UpdateProducto(Productos producto)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandType = CommandType.StoredProcedure;
+            sqlCommand.CommandText = "ProcedureModificarProducto";
+
+            // Agregar parámetros
+            sqlCommand.Parameters.AddWithValue("@IDPRODUCTO", producto.IdProducto);
+            sqlCommand.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
+            sqlCommand.Parameters.AddWithValue("@CantidadPorUnidad", producto.CantidadPorUnidad);
+            sqlCommand.Parameters.AddWithValue("@PrecioUnidad", producto.PrecioUnidad);
+
+            // Crear la instancia para acceder a la DB y ejecutar el procedimiento
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            int filasActualizadas = accesoDatos.EjecutarProcedimientoAlmacenado(sqlCommand, "ProcedureModificarProducto");
+
+            //reviso si se elimino correctamente
+            if (filasActualizadas == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

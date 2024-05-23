@@ -16,7 +16,7 @@ namespace TP6_Grupo1.Conexion
         private int _IdProveedor;
         private int _IdCategoria;
         private string _NombreProducto;
-        private int _CantidadPorUnidad;
+        private string _CantidadPorUnidad;
         private decimal _PrecioUnidad;
         private int _UnidadesEnExistencia;
         private int _UnidadesEnPedido;
@@ -33,7 +33,7 @@ namespace TP6_Grupo1.Conexion
             _IdProducto = IdProductos;
         }
 
-        public Productos( int IdProveedor, int IdCategoria, string NombreProducto, int CantidadPorUnidad, 
+        public Productos( int IdProveedor, int IdCategoria, string NombreProducto, string CantidadPorUnidad, 
             decimal PrecioUnidad, int UnidadesEnExistencia, int UnidadesEnPedido,  int NivelNuevoPedido, int Suspendido) 
         {
             _IdProveedor = IdProveedor;
@@ -92,7 +92,7 @@ namespace TP6_Grupo1.Conexion
                 _NombreProducto = value;
             }
         }
-        public int CantidadPorUnidad
+        public string CantidadPorUnidad
         {
             get
             {

@@ -43,6 +43,39 @@ namespace TP6_Grupo1
 
         protected void GVProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            // Obtener el ID del producto que se está editando
+            string idProducto = ((Label)GVProductos.Rows[e.RowIndex].FindControl("lb_eit_IdProducto")).Text;
+
+            // Obtener los nuevos valores de los controles de edición
+            string nombreProducto = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_NombreProducto")).Text;
+            string cantidadPorUnidad = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_CantidadPorUnidad")).Text;
+            string precioUnidad = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_PrecioUnidad")).Text;
+
+            // Crear el objeto Producto con los nuevos valores
+            Productos producto = new Productos
+            {
+                IdProducto = Convert.ToInt32(idProducto),
+                NombreProducto = nombreProducto,
+                CantidadPorUnidad = cantidadPorUnidad,
+                PrecioUnidad = Convert.ToDecimal(precioUnidad)
+            };
+
+            // Actualizar el producto en la base de datos
+            GestionProductos gestionProductos = new GestionProductos();
+
+            if (gestionProductos.UpdateProducto(producto))
+            {
+                lb_Mensaje.Text = "Producto actualizado exitosamente.";
+            }
+            else
+            {
+                lb_Mensaje.ForeColor = System.Drawing.Color.Red;
+                lb_Mensaje.Text = "Error al actualizar el producto.";
+            }
+
+            //actualizo el grid view
+            GVProductos.EditIndex = -1;
+            CargarGVProductos();
 
         }
 

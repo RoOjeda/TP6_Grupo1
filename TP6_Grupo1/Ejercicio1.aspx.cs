@@ -50,7 +50,13 @@ namespace TP6_Grupo1
             string nombreProducto = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_NombreProducto")).Text;
             string cantidadPorUnidad = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_CantidadPorUnidad")).Text;
             string precioUnidad = ((TextBox)GVProductos.Rows[e.RowIndex].FindControl("txt_eit_PrecioUnidad")).Text;
-
+            
+            if (string.IsNullOrEmpty(nombreProducto) || string.IsNullOrEmpty(cantidadPorUnidad) || !decimal.TryParse(precioUnidad, out decimal precio))
+            {
+                lb_Mensaje.ForeColor = System.Drawing.Color.Red;
+                lb_Mensaje.Text = "Por favor, ingrese valores válidos.";
+                return;
+            }
             // Crear el objeto Producto con los nuevos valores
             Productos producto = new Productos
             {

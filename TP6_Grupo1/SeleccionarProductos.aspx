@@ -39,7 +39,32 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:GridView ID="gvSelectProd" runat="server" AllowPaging="True" AutoGenerateColumns="False" AutoGenerateSelectButton="True" PageSize="14">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Id Producto">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_idProducto" runat="server"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Nombre Producto">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_nomProd" runat="server"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id Proveedor">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_idProv" runat="server"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Precio Unitario">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lbl_it_precio" runat="server"></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </td>
                     <td>&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -69,7 +94,9 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:Label ID="lblSeleccion" runat="server"></asp:Label>
+                    </td>
                     <td>&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
                     <td>&nbsp;</td>

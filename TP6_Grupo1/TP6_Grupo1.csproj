@@ -93,6 +93,7 @@
     <Compile Include="Ejercicio2.aspx.designer.cs">
       <DependentUpon>Ejercicio2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="gvSelectProdEditPageEventArgs.cs" />
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

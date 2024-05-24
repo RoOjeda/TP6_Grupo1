@@ -18,7 +18,7 @@ namespace TP6_Grupo1.Conexion
             // Constructor Vacio
         }
         //Metodos
-        public SqlConnection ObtenerConexion()
+        private SqlConnection ObtenerConexion()
         {
             SqlConnection sqlConexion = new SqlConnection(rutaProductos);
             try
@@ -31,12 +31,12 @@ namespace TP6_Grupo1.Conexion
                 return null;
             }
         }
-        public SqlDataAdapter ObtenerAdaptador(string consultaSql)
+        private SqlDataAdapter ObtenerAdaptador(string storeProcedure)
         {
             SqlDataAdapter sqlDataAdapter;
             try
             {
-                sqlDataAdapter = new SqlDataAdapter(consultaSql, ObtenerConexion());
+                sqlDataAdapter = new SqlDataAdapter(storeProcedure, ObtenerConexion());
                 return sqlDataAdapter;
             }
             catch (Exception )
@@ -45,21 +45,32 @@ namespace TP6_Grupo1.Conexion
             }
         }
 
-        public int EjecutarProcedimientoAlmacenado(SqlCommand comandoSQL, string ProcedimientoAlmacenado) //comandoSQL recibe tiene los parametros incluidos
+        public int EjecutarProcedimientoAlmacenado(String storeProcedure, SqlCommand sqlCommand) //comandoSQL recibe tiene los parametros incluidos
         {
             int FilasCambiadas;
             SqlConnection Conexion = ObtenerConexion();
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand = comandoSQL;
             sqlCommand.Connection = Conexion;
             sqlCommand.CommandType = CommandType.StoredProcedure;   ///SE TRATA DE UN PROCEDIMIENTO ALMACENADO
-            sqlCommand.CommandText = ProcedimientoAlmacenado; /// NOMBRE DEL PROCEDIMIENTO ALMACENADO
+            sqlCommand.CommandText = storeProcedure;                /// EL STORE PROCEDURE SE RECIBE POR PARAMETRO
             FilasCambiadas = sqlCommand.ExecuteNonQuery();          /// SE EJECUTA EL PROCEDIMIENTO ALMACENADO
             Conexion.Close();
             return FilasCambiadas;
         }
+    
+
+        public DataTable EjecutarProcedimientoAlmacenado(String storeProcedure)
+        {
+            DataTable dataTable = new DataTable();
+            AccesoDatos datos = new AccesoDatos();
+            SqlDataAdapter sqlDataAdapter = ObtenerAdaptador(storeProcedure);
+            sqlDataAdapter.Fill(dataTable);
+            
+            return dataTable;
+
+        }
+
+
     }
    
-
 
 }

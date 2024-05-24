@@ -8,37 +8,41 @@ namespace TP6_Grupo1.Conexion
 {
     public class GestionProductos
     {
+
+        private const string SP_ELIMINAR = "ProcedureDeleteProducto";
+        private const string SP_MODIFICAR = "ProcedureModificarProducto";
+        private const string SP_TODOS = "ProcedureTodosProducto";
+
+        private AccesoDatos accesoDatos = new AccesoDatos();
+
+
         public GestionProductos() {
         ///constructor vacío
         }
         ///Metodos
-        private DataTable ObtenerTabla(string nombreTabla, string consultaSQL) 
-        {
-            DataSet dataSet = new DataSet();
-            AccesoDatos datos = new AccesoDatos();
-            SqlDataAdapter sqlDataAdapter = datos.ObtenerAdaptador(consultaSQL);
-            sqlDataAdapter.Fill(dataSet, nombreTabla);
-            return dataSet.Tables[nombreTabla];
-        }
+
         public DataTable ObtenerProductos()
         {
-            return ObtenerTabla("Productos", "SELECT IdProducto, NombreProducto, CantidadPorUnidad, PrecioUnidad  FROM Productos");
+            return accesoDatos.EjecutarProcedimientoAlmacenado(SP_TODOS);
         }
-        private void ProductoDeleteParameter(ref SqlCommand Comando, Productos producto)
+        private void ProductoParameter(ref SqlCommand Comando, Productos producto)
         {
-            SqlParameter SqlParametros = new SqlParameter();
-            SqlParametros = Comando.Parameters.Add("@IdProducto", SqlDbType.Int);
-            SqlParametros.Value = producto.IdProducto;
+            
+            Comando.Parameters.AddWithValue("@IDPRODUCTO", producto.IdProducto);
+            if (producto.NombreProducto != null) { Comando.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto); }        
+            if (producto.CantidadPorUnidad != null) { Comando.Parameters.AddWithValue("@CantidadPorUnidad", producto.CantidadPorUnidad); }  
+            if (producto.PrecioUnidad != 0) { Comando.Parameters.AddWithValue("@PrecioUnidad", producto.PrecioUnidad); }          
+
+
         }
 
         public bool DeleteProducto(Productos producto)
         {
             SqlCommand sqlCommand = new SqlCommand();
             //ajusto el parametro q deseo eliminar
-            ProductoDeleteParameter(ref sqlCommand, producto);
-            //creo la instancia para acceder a la DB NEPTUNO Y ejecuto el procedure
-            AccesoDatos accesoDatos = new AccesoDatos();
-            int FilasInsertadas = accesoDatos.EjecutarProcedimientoAlmacenado(sqlCommand, "ProcedureDeleteProducto");
+            ProductoParameter(ref sqlCommand, producto);
+
+            int FilasInsertadas = accesoDatos.EjecutarProcedimientoAlmacenado(SP_ELIMINAR, sqlCommand);
             //reviso si se elimino correctamente
             if (FilasInsertadas == 1)
             {
@@ -48,7 +52,9 @@ namespace TP6_Grupo1.Conexion
             {
                 return false;
             }
-            }
+         }
+
+
         public bool UpdateProducto(Productos producto)
         {
             SqlCommand sqlCommand = new SqlCommand();
@@ -56,15 +62,14 @@ namespace TP6_Grupo1.Conexion
             sqlCommand.CommandText = "ProcedureModificarProducto";
 
             // Agregar parámetros
-            sqlCommand.Parameters.AddWithValue("@IDPRODUCTO", producto.IdProducto);
-            sqlCommand.Parameters.AddWithValue("@NombreProducto", producto.NombreProducto);
-            sqlCommand.Parameters.AddWithValue("@CantidadPorUnidad", producto.CantidadPorUnidad);
-            sqlCommand.Parameters.AddWithValue("@PrecioUnidad", producto.PrecioUnidad);
+
+            ProductoParameter(ref sqlCommand, producto);
+
 
             // Crear la instancia para acceder a la DB y ejecutar el procedimiento
             AccesoDatos accesoDatos = new AccesoDatos();
 
-            int filasActualizadas = accesoDatos.EjecutarProcedimientoAlmacenado(sqlCommand, "ProcedureModificarProducto");
+            int filasActualizadas = accesoDatos.EjecutarProcedimientoAlmacenado("ProcedureModificarProducto", sqlCommand);
 
             //reviso si se elimino correctamente
             if (filasActualizadas == 1)

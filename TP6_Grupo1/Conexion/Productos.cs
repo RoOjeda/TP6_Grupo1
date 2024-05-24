@@ -13,15 +13,11 @@ namespace TP6_Grupo1.Conexion
 
 
         private int _IdProducto;
-        private int _IdProveedor;
-        private int _IdCategoria;
-        private string _NombreProducto;
-        private string _CantidadPorUnidad;
+        private int _idProveedor;
+        private string _NombreProducto = null;
+        private string _CantidadPorUnidad = null;
         private decimal _PrecioUnidad;
-        private int _UnidadesEnExistencia;
-        private int _UnidadesEnPedido;
-        private int _NivelNuevoPedido;
-        private int _Suspendido;
+
 
         public Productos()
         {
@@ -31,21 +27,18 @@ namespace TP6_Grupo1.Conexion
         public Productos(int IdProductos)
         {
             _IdProducto = IdProductos;
+            
         }
 
-        public Productos( int IdProveedor, int IdCategoria, string NombreProducto, string CantidadPorUnidad, 
-            decimal PrecioUnidad, int UnidadesEnExistencia, int UnidadesEnPedido,  int NivelNuevoPedido, int Suspendido) 
+        public Productos(string NombreProducto, string CantidadPorUnidad,
+            decimal PrecioUnidad)
         {
-            _IdProveedor = IdProveedor;
-            _IdCategoria = IdCategoria;
+
             _NombreProducto = NombreProducto;
             _CantidadPorUnidad = CantidadPorUnidad;
             _PrecioUnidad = PrecioUnidad;
-            _UnidadesEnExistencia = UnidadesEnExistencia;
-            _UnidadesEnPedido = UnidadesEnPedido;
-            _NivelNuevoPedido = NivelNuevoPedido;
-            _Suspendido = Suspendido;
-        
+
+
         }
         /// METODOS GETTER Y SETTERS
         public int IdProducto
@@ -59,28 +52,22 @@ namespace TP6_Grupo1.Conexion
                 _IdProducto = value;
             }
         }
-        public int IdProveedor
+
+        public int idProveedor
         {
             get
             {
-                return _IdProveedor;
+                return _idProveedor;
             }
             set
             {
-                _IdProveedor = value;
+                _idProveedor = value;
             }
         }
-        public int IdCategoria
-        {
-            get
-            {
-                return _IdCategoria;
-            }
-            set
-            {
-                _IdCategoria = value;
-            }
-        }
+
+
+
+
         public string NombreProducto
         {
             get
@@ -103,6 +90,7 @@ namespace TP6_Grupo1.Conexion
                 _CantidadPorUnidad = value;
             }
         }
+
         public decimal PrecioUnidad
         {
             get
@@ -114,49 +102,7 @@ namespace TP6_Grupo1.Conexion
                 _PrecioUnidad = value;
             }
         }
-        public int UnidadesEnExistencia
-        {
-            get
-            {
-                return _UnidadesEnExistencia;
-            }
-            set
-            {
-                _UnidadesEnExistencia = value;
-            }
-        }
-        public int UnidadesEnPedido
-        {
-            get
-            {
-                return _UnidadesEnPedido;
-            }
-            set
-            {
-                _UnidadesEnPedido = value;
-            }
-        }
-        public int NivelNuevoPedido
-        {
-            get
-            {
-                return _NivelNuevoPedido;
-            }
-            set
-            {
-                _NivelNuevoPedido = value;
-            }
-        }
-        public int Suspendido
-        {
-            get
-            {
-                return _Suspendido;
-            }
-            set
-            {
-                _Suspendido = value;
-            }
-        }
+
+
     }
 }

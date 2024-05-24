@@ -87,11 +87,13 @@ namespace TP6_Grupo1
 
             //creo el objeto de tipo producto y le cargo el id a eliminar
             Productos producto = new Productos(Convert.ToInt32(ProductoSelected));
+            //lbltemp.Text = producto.IdProducto.ToString() + "-" + producto.NombreProducto + "-" + (if(producto.idProveedor!=null));
 
             //creo la instancia para ejecutar el procedure
             GestionProductos gp = new GestionProductos();
+
             //ejecuto el delete y chequeo si se elimino correctamente
-            if(gp.DeleteProducto(producto) == true)
+            if (gp.DeleteProducto(producto) == true)
             {
                 lb_Mensaje.Text = "Se Elimino El Registro Exitosamente";
             }
@@ -102,6 +104,8 @@ namespace TP6_Grupo1
             }
 
             CargarGVProductos();
+
+
         }
 
         protected void GVProductos_SelectedIndexChanged(object sender, EventArgs e)

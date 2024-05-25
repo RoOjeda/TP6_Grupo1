@@ -44,13 +44,20 @@ namespace TP6_Grupo1
 
         protected void gvSelectProd_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-            DataRow data = ((DataTable)Session["TablaSeleccionados"]).NewRow();
+            
 
             string IdProducto = ((Label)gvSelectProd.Rows[e.NewSelectedIndex].FindControl("Lb_it_IdProduc")).Text;
+
+            if (existeSeleccionado(IdProducto)) {
+                lblSeleccion.Text = "Usted Ya seleccionó anteriormente el id: " + "  " + IdProducto;
+                return;
+            }
+            
             string NombreProducto = ((Label)gvSelectProd.Rows[e.NewSelectedIndex].FindControl("Lb_It_Nombre")).Text;
             string IdProveedor = ((Label)gvSelectProd.Rows[e.NewSelectedIndex].FindControl("Lb_It_IdProveedor")).Text;
             string PrecioUnidad = ((Label)gvSelectProd.Rows[e.NewSelectedIndex].FindControl("Lb_It_Precio")).Text;
 
+            DataRow data = ((DataTable)Session["TablaSeleccionados"]).NewRow();
             data["IdProducto"] = IdProducto;
             data["NombreProducto"] = NombreProducto;
             data["idProveedor"] = IdProveedor;
@@ -60,6 +67,16 @@ namespace TP6_Grupo1
             ((DataTable)Session["TablaSeleccionados"]).Rows.Add(data);
 
             lblSeleccion.Text = "Usted seleccionó: " + "  " + NombreProducto;
+        }
+
+        private bool existeSeleccionado(string idProducto)
+        {
+            foreach (DataRow producto in ((DataTable)Session["TablaSeleccionados"]).Rows)
+            {
+                string idcomp = ((int)producto["IdProducto"]).ToString();
+                if (idcomp.CompareTo(idProducto) == 0) { return true; }
+            }
+            return false;
         }
     }
 }

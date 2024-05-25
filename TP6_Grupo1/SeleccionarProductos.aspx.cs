@@ -29,15 +29,29 @@ namespace TP6_Grupo1
             gvSelectProd.DataBind();
         }
 
-     
-       
+
+
         protected void gvSelectProd_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Obtener los valores de las celdas seleccionadas
-            
+            string IdProducto = ((Label)gvSelectProd.Rows[gvSelectProd.SelectedIndex].FindControl("Lb_it_IdProduc")).Text;
             string NombreProducto = ((Label)gvSelectProd.Rows[gvSelectProd.SelectedIndex].FindControl("Lb_It_Nombre")).Text;
-           
-            lblSeleccion.Text = " Usted seleccionó: " + "  " + NombreProducto;
+            string IdProveedor = ((Label)gvSelectProd.Rows[gvSelectProd.SelectedIndex].FindControl("Lb_It_IdProveedor")).Text;
+            string PrecioUnidad = ((Label)gvSelectProd.Rows[gvSelectProd.SelectedIndex].FindControl("Lb_It_Precio")).Text;
+
+            DataTable dtProductosSeleccionados = Session["ProductosSeleccionados"] as DataTable;
+            if (dtProductosSeleccionados == null)
+            {
+                dtProductosSeleccionados = new DataTable();
+                dtProductosSeleccionados.Columns.Add("IdProducto", typeof(string));
+                dtProductosSeleccionados.Columns.Add("NombreProducto", typeof(string));
+                dtProductosSeleccionados.Columns.Add("IdProveedor", typeof(string));
+                dtProductosSeleccionados.Columns.Add("PrecioUnidad", typeof(string));
+                Session["ProductosSeleccionados"] = dtProductosSeleccionados;
+            }
+
+            dtProductosSeleccionados.Rows.Add(IdProducto, NombreProducto, IdProveedor, PrecioUnidad);
+
+            lblSeleccion.Text = "Usted seleccionó: " + "  " + NombreProducto;
         }
 
         protected void gvSelectProd_PageIndexChanging(object sender, GridViewPageEventArgs e)

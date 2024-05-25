@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
+
 
 namespace TP6_Grupo1
 {
@@ -11,7 +13,19 @@ namespace TP6_Grupo1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                CargarProductosSeleccionados();
+            }
+        }
+        private void CargarProductosSeleccionados()
+        {
+            DataTable dtSeleccionados = Session["ProductosSeleccionados"] as DataTable;
+            if (dtSeleccionados != null)
+            {
+                gvMostrarProductos.DataSource = dtSeleccionados;
+                gvMostrarProductos.DataBind();
+            }
         }
     }
 }

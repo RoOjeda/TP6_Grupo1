@@ -128,7 +128,9 @@
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>
+                        <asp:HyperLink ID="HLInicioEjer2" runat="server" NavigateUrl="~/Ejercicio2.aspx" OnDataBinding="Page_Load" >Volver al Inicio</asp:HyperLink>
+                    </td>
                     <td>&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>
                     <td>&nbsp;</td>
@@ -141,8 +143,7 @@
                     <td class="auto-style2"></td>
                     <td class="auto-style2"></td>
                     <td class="auto-style4">
-                        <asp:HyperLink ID="HLInicioEjer2" runat="server" NavigateUrl="~/Ejercicio2.aspx" OnDataBinding="Page_Load" >Volver al Inicio</asp:HyperLink>
-                    </td>
+                        &nbsp;</td>
                     <td class="auto-style2"></td>
                     <td class="auto-style2"></td>
                     <td class="auto-style2"></td>

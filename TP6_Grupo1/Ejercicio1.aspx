@@ -165,12 +165,21 @@
                 <td class="auto-style16"></td>
             </tr>
             <tr>
+                <td class="auto-style12">&nbsp;</td>
+                <td class="auto-style13">
+                    &nbsp;</td>
+                <td class="auto-style14">&nbsp;</td>
+                <td class="auto-style15">&nbsp;</td>
+                <td class="auto-style16">&nbsp;</td>
+            </tr>
+            <tr>
                 <td class="auto-style11">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style9">
+                <td class="auto-style6">
                     <asp:HyperLink ID="HLinicio" runat="server" NavigateUrl="~/Inicio.aspx" >Volver al Inicio</asp:HyperLink>
                 </td>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style9">
+                    &nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

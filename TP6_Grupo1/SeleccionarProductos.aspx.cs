@@ -73,8 +73,7 @@ namespace TP6_Grupo1
         {
             foreach (DataRow producto in ((DataTable)Session["TablaSeleccionados"]).Rows)
             {
-                string idcomp = ((int)producto["IdProducto"]).ToString();
-                if (idcomp.CompareTo(idProducto) == 0) { return true; }
+                if (((int)producto["IdProducto"]) == (Int32.Parse(idProducto))) { return true; }
             }
             return false;
         }

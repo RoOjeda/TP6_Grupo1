@@ -43,8 +43,7 @@
                       <asp:GridView ID="gvSelectProd" runat="server" AllowPaging="True" AutoGenerateColumns="False"
     AutoGenerateSelectButton="True" PageSize="14" BackColor="White" BorderColor="#CCCCCC"
     BorderStyle="None" BorderWidth="1px" CellPadding="3"
-    OnSelectedIndexChanged="gvSelectProd_SelectedIndexChanged"
-    OnPageIndexChanging="gvSelectProd_PageIndexChanging">
+    OnPageIndexChanging="gvSelectProd_PageIndexChanging" OnSelectedIndexChanging="gvSelectProd_SelectedIndexChanging">
                             <Columns>
                                 <asp:TemplateField HeaderText="IdProducto">
                                     <ItemTemplate>
@@ -108,7 +107,7 @@
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>
-                        <asp:Label ID="lblSeleccion" runat="server" OnDataBinding="gvSelectProd_SelectedIndexChanged"></asp:Label>
+                        <asp:Label ID="lblSeleccion" runat="server"></asp:Label>
                     </td>
                     <td>&nbsp;</td>
                     <td class="auto-style3">&nbsp;</td>

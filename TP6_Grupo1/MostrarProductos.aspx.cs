@@ -15,17 +15,10 @@ namespace TP6_Grupo1
         {
             if (!IsPostBack)
             {
-                CargarProductosSeleccionados();
-            }
-        }
-        private void CargarProductosSeleccionados()
-        {
-            DataTable dtSeleccionados = Session["ProductosSeleccionados"] as DataTable;
-            if (dtSeleccionados != null)
-            {
-                gvMostrarProductos.DataSource = dtSeleccionados;
+                gvMostrarProductos.DataSource = (DataTable)Session["TablaSeleccionados"];
                 gvMostrarProductos.DataBind();
             }
         }
+
     }
 }

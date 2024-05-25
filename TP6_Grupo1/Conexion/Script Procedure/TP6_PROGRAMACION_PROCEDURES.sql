@@ -1,13 +1,13 @@
-﻿use Neptuno
+﻿use Neptuno;
 
-GO;
+GO
 
 -- PROCEDURE PARA LISTAR TODOS LOS PRODUCTOS
 CREATE PROCEDURE ProcedureTodosProducto
 AS
 BEGIN
      SELECT IdProducto, idProveedor, NombreProducto, CantidadPorUnidad, PrecioUnidad from Productos
-END
+END;
 GO
 
 
@@ -21,7 +21,7 @@ AS
 BEGIN
 	DELETE FROM Productos
 	WHERE IdProducto = @IDPRODUCTO
-END
+END;
 GO
 
 -- PROCEDURE PARA MODIFICAR UN PRODUCTO
